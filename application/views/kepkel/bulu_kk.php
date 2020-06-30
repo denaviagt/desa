@@ -24,6 +24,6 @@
 		})
 	}
 
-	loadKonten('http://localhost/kuliah/Desa/Kepkel/kk_list');
+	loadKonten('<?=base_url()?>Kepkel/bulu_kk');
 
 </script>

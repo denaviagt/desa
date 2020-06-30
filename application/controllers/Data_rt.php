@@ -22,31 +22,30 @@ class Data_rt extends CI_Controller {
    {
       $daftar_rt = $this->Datart_model->get_daftar_rt();
 
-      $konten = '<tr class="headings">
-                  <th class="column-title">Dusun</th>
-                  <th class="column-title">RT</th>
-                  <th class="column-title">Jumlah KK</th>
-                  <th class="column-title">Jumlah Penduduk</th>
-                  <th class="column-title">Aksi </th>
-                  </tr>';
-
+      $konten = '
+               <thead>
+                  <tr class="headings">
+                  <th class="column-title col-md-1">#</th>
+                  <th class="column-title col-md-3">Dusun</th>
+                  <th class="column-title col-md-2">RT</th>
+                  <th class="column-title col-md-3 text-center">Jumlah KK</th>
+                  <th class="column-title col-md-3 text-center">Jumlah Penduduk</th>
+                  </tr>
+                  </thead>';
+      $i = 1;
       foreach ($daftar_rt->result() as $key => $value) {
          $konten .= '<tr class="even pointer">
+                  <td>'.$i++.'</td>
                   <td>'.$value->nama_dsn.'</td>
                   <td>'.$value->no_rt.'</td>
-                  <td>'.$value->jumlah_kk.'</td>
-                  <td>'.$value->jumlah_penduduk.'</td>
-                  <td>
-                     <a data-toggle= "tooltip" data-placement="top" title="Edit">
-                     <span class="glyphicon glyphicon-edit " aria-hidden="true"></span></a>
-                     <a data-toggle="tooltip" data-placement="top" title="Delete">
-                     <span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-                  </td>
+                  <td class="text-center">'.$value->jumlah_kk.'</td>
+                  <td class="text-center">'.$value->total_penduduk.'</td>
                </tr>';
       }
       $data_json = array(
          'konten' => $konten,
       );
+      // var_dump($data_json);die;
       echo json_encode($data_json);
    }
 

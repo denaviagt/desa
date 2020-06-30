@@ -1,111 +1,103 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Penduduk_model extends CI_Model {
-     public function get_penduduk()
+class Penduduk_model extends CI_Model
+{
+     public function get_penduduk($id_dusun)
      {
           $this->db->select('penduduk.*');
           $this->db->from('penduduk');
           $this->db->join('kepala_keluarga', 'kepala_keluarga.no_kk = penduduk.no_kk');
           $this->db->join('dusun', 'dusun.id_dusun = kepala_keluarga.id_dusun');
           $this->db->where('dusun.id_dusun', $id_dusun);
+          // $this->db->limit($limit, $start);
           return $this->db->get();
      }
 
-     public function blambangan_list()
+     public function get_penduduk_new($id_dusun, $limit, $start)
      {
           $this->db->select('penduduk.*');
           $this->db->from('penduduk');
           $this->db->join('kepala_keluarga', 'kepala_keluarga.no_kk = penduduk.no_kk');
           $this->db->join('dusun', 'dusun.id_dusun = kepala_keluarga.id_dusun');
-          $this->db->where('dusun.id_dusun', 1);
+          $this->db->where('dusun.id_dusun', $id_dusun);
+          $this->db->limit($limit, $start);
           return $this->db->get();
      }
 
-     public function bulu_list()
+     public function count_penduduk()
      {
-          $this->db->select('penduduk.*');
-          $this->db->from('penduduk');
-          $this->db->join('kepala_keluarga', 'kepala_keluarga.no_kk = penduduk.no_kk');
-          $this->db->join('dusun', 'dusun.id_dusun = kepala_keluarga.id_dusun');
-          $this->db->where('dusun.id_dusun', 2);
-          return $this->db->get();
+
+          $this->db->get('penduduk')->num_rows();
      }
-     
-     public function jlatren_list()
+
+     public function insert_data($data)
+     {
+          $this->db->insert('penduduk', $data);
+     }
+
+     public function get_by_id($nik)
      {
           $this->db->select('penduduk.*');
           $this->db->from('penduduk');
           $this->db->join('kepala_keluarga', 'kepala_keluarga.no_kk = penduduk.no_kk');
           $this->db->join('dusun', 'dusun.id_dusun = kepala_keluarga.id_dusun');
-          $this->db->where('dusun.id_dusun', 3);
+          $this->db->where('nik', $nik);
           return $this->db->get();
      }
 
-      public function jragung_list()
+     public function update_data($nik, $data)
      {
-          $this->db->select('penduduk.*');
+          $this->db->where('nik', $nik);
+          $this->db->update('penduduk', $data);
+     }
+
+     public function delete_data($nik)
+     {
+          $this->db->where('nik', $nik);
+          $this->db->delete('penduduk');
+     }
+
+     public function cari_data($query)
+     {
+          $this->db->select('*');
           $this->db->from('penduduk');
-          $this->db->join('kepala_keluarga', 'kepala_keluarga.no_kk = penduduk.no_kk');
-          $this->db->join('dusun', 'dusun.id_dusun = kepala_keluarga.id_dusun');
-          $this->db->where('dusun.id_dusun', 4);
+
+          if ($query != '') {
+               $this->db->like('nik', $query);
+               $this->db->or_like('no_kk', $query);
+               $this->db->or_like('nama', $query);
+          }
+          $this->db->order_by('nama', 'ASC');
           return $this->db->get();
      }
 
-      public function karongan_list()
+     public function get_jekel()
      {
-          $this->db->select('penduduk.*');
-          $this->db->from('penduduk');
-          $this->db->join('kepala_keluarga', 'kepala_keluarga.no_kk = penduduk.no_kk');
-          $this->db->join('dusun', 'dusun.id_dusun = kepala_keluarga.id_dusun');
-          $this->db->where('dusun.id_dusun', 5);
-          return $this->db->get();
+          $query = ("SELECT jkel, COUNT(*) AS jum_pend FROM `penduduk` GROUP BY jkel");
+
+          return $this->db->query($query)->result();
      }
 
-      public function kranggan1_list()
+     public function get_umur()
      {
-          $this->db->select('penduduk.*');
-          $this->db->from('penduduk');
-          $this->db->join('kepala_keluarga', 'kepala_keluarga.no_kk = penduduk.no_kk');
-          $this->db->join('dusun', 'dusun.id_dusun = kepala_keluarga.id_dusun');
-          $this->db->where('dusun.id_dusun', 6);
-          return $this->db->get();
+          $query = ("SELECT (YEAR(CURDATE())-YEAR(tgl_lahir)) AS Umur, COUNT(*) AS jumlah FROM `penduduk` GROUP BY Umur");
+
+          return $this->db->query($query)->result();
      }
-      public function kranggan2_list()
+
+     public function get_nokk($id_dusun)
      {
-          $this->db->select('penduduk.*');
-          $this->db->from('penduduk');
-          $this->db->join('kepala_keluarga', 'kepala_keluarga.no_kk = penduduk.no_kk');
-          $this->db->join('dusun', 'dusun.id_dusun = kepala_keluarga.id_dusun');
-          $this->db->where('dusun.id_dusun', 7);
-          return $this->db->get();
+          $query = "SELECT DISTINCT * FROM `kepala_keluarga`
+          JOIN `dusun` ON `dusun`.`id_dusun` = `kepala_keluarga`.`id_dusun` 
+          WHERE `kepala_keluarga`.`id_dusun` = $id_dusun
+          ORDER BY `kepala_keluarga`.`no_kk` ASC";
+          return $this->db->query($query);
+          // $query = ("SELECT no_kk FROM penduduk WHERE no_kk LIKE '%.$no_kk.%' ORDER BY no_kk ASC");
+          // return $this->db->query($query)->result();
+          // $this->db->like('no_kk', $no_kk, 'both');;
+          // $this->db->order_by('no_kk', 'ASC');
+          // $this->db->limit(10);
+          // return $this->db->get('penduduk')->result();
      }
-     public function krasaan_list()
-     {
-          $this->db->select('penduduk.*');
-          $this->db->from('penduduk');
-          $this->db->join('kepala_keluarga', 'kepala_keluarga.no_kk = penduduk.no_kk');
-          $this->db->join('dusun', 'dusun.id_dusun = kepala_keluarga.id_dusun');
-          $this->db->where('dusun.id_dusun', 8);
-          return $this->db->get();
-     }
-      public function rejosari_list()
-     {
-          $this->db->select('penduduk.*');
-          $this->db->from('penduduk');
-          $this->db->join('kepala_keluarga', 'kepala_keluarga.no_kk = penduduk.no_kk');
-          $this->db->join('dusun', 'dusun.id_dusun = kepala_keluarga.id_dusun');
-          $this->db->where('dusun.id_dusun', 9);
-          return $this->db->get();
-     }
-      public function morobangun_list()
-     {
-          $this->db->select('penduduk.*');
-          $this->db->from('penduduk');
-          $this->db->join('kepala_keluarga', 'kepala_keluarga.no_kk = penduduk.no_kk');
-          $this->db->join('dusun', 'dusun.id_dusun = kepala_keluarga.id_dusun');
-          $this->db->where('dusun.id_dusun', 10);
-          return $this->db->get();
-     }
-      
 }

@@ -24,6 +24,6 @@
 		})
 	}
 
-	loadKonten('http://localhost/kuliah/Desa/Data_rt/rt_list');
+	loadKonten('<?=base_url()?>Data_rt/rt_list');
 
 </script>

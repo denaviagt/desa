@@ -24,6 +24,6 @@
 		})
 	}
 
-	loadKonten2('http://localhost/kuliah/Desa/apartur/apartur_list');
+	loadKonten2('<?=base_url()?>administratif/administratif_list');
 
 </script>

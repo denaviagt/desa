@@ -1,0 +1,51 @@
+#tile-penduduk{
+    padding-top: 20px;
+    background-image: linear-gradient(to right, rgb(114, 99, 243) , rgb(76, 0, 255));
+}
+#tile-penduduk:hover{
+    transform:scale(1.1) ;
+    transition-duration: 1s;
+    
+}
+
+#tile-kk{
+    padding-top: 20px;
+    background-image: linear-gradient(to right, rgb(238, 152, 81), rgb(255, 115, 0));
+	
+}
+
+#tile-kk:hover{
+    transform:scale(1.1) ;
+    transition-duration: 1s;
+}
+
+#tile-dusun{
+    padding-top: 20px;
+	background-image: linear-gradient(to right, rgb(106, 230, 188) , rgb(16, 202, 140));
+}
+
+#tile-dusun:hover{
+    transform:scale(1.1) ;
+    transition-duration: 1s;
+}
+
+#tile-aparatur{
+    padding-top: 20px;
+	background-image: linear-gradient(to right, rgb(243, 111, 88) , rgb(224, 15, 102));
+}
+
+#tile-aparatur:hover{
+    transform:scale(1.1) ;
+    transition-duration: 1s;
+}
+
+.tile-icon i{
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+#image-berita img{
+    display: block;
+    max-height: 200px;
+    margin: 0 auto;
+}

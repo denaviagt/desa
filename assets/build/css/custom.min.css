@@ -10,8 +10,8 @@ table.tile_info td p {
 	text-overflow: ellipsis
 }
 
-.x_title .table{
-	font-size: 16px;
+.x_title .table-responsive .table{
+	font-size: 13px !important;
 }
 
 .detail a,
@@ -462,6 +462,10 @@ body .container.body .right_col {
 
 @media (max-width:991px) {
 
+	.page-title .title_left h3 {
+		font-size: 16px ;
+	}
+
 	.nav-md .container.body .right_col,
 	.nav-md .container.body .top_nav {
 		width: 100%;
@@ -616,7 +620,7 @@ body {
 	color: #73879C;
 	background: #2A3F54;
 	font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
-	font-size: 15px;
+	font-size: 13px;
 	font-weight: 400;
 	line-height: 1.471
 }
@@ -834,7 +838,7 @@ a:visited {
 
 .top_nav .navbar-right li {
 	display: inline-block;
-	float: right;
+	/* float: right; */
 	position: static
 }
 
@@ -1279,7 +1283,7 @@ h2 {
 	border: 1px solid #E6E9ED;
 	-webkit-column-break-inside: avoid;
 	-moz-column-break-inside: avoid;
-	column-break-inside: avoid;
+	/* column-break-inside: avoid; */
 	opacity: 1;
 	transition: all .2s ease
 }
@@ -1714,8 +1718,8 @@ td.details {
 .paging_full_numbers a.paginate_active,
 .paging_full_numbers a.paginate_button {
 	border: 1px solid #aaa;
-	-webkit-border-radius: 5px;
-	-moz-border-radius: 5px;
+	/* -webkit-border-radius: 5px;
+	-moz-border-radius: 5px; */
 	padding: 2px 5px;
 	margin: 0 3px;
 	cursor: pointer
@@ -1831,8 +1835,8 @@ ul.quick-list li {
 	position: absolute;
 	background: #fff;
 	margin-top: 0;
-	border: 1px solid #D9DEE4;
-	-webkit-box-shadow: none;
+	border: 1px solid #0a0b0c;
+	/* -webkit-box-shadow: none; */
 	right: 0;
 	left: auto;
 	width: 220px
@@ -1927,7 +1931,7 @@ ul.quick-list li i {
 	border: 1px solid #abd9ea;
 	border-radius: 5px;
 	text-align: center;
-	float: right;
+	/* float: right; */
 	padding: 2px;
 	margin-top: 10px
 }
@@ -2209,9 +2213,9 @@ h4.graph_title {
 	-webkit-border-radius: 5px;
 	overflow: hidden;
 	padding-bottom: 5px;
-	-webkit-background-clip: padding-box;
+	/* -webkit-background-clip: padding-box; */
 	-moz-border-radius: 5px;
-	-moz-background-clip: padding;
+	/* -moz-background-clip: padding; */
 	border-radius: 5px;
 	background: #FFF;
 	transition: all .3s ease-in-out
@@ -2662,8 +2666,8 @@ textarea.parsley-error {
 	box-shadow: 0 0 4px -2px #CE5454;
 	position: relative;
 	left: 0;
-	-moz-animation: .7s 1 shake linear;
-	-webkit-animation: .7s 1 shake linear
+	/* -moz-animation: .7s 1 shake linear;
+	-webkit-animation: .7s 1 shake linear */
 }
 
 .item input,
@@ -2931,8 +2935,8 @@ textarea:focus {
 }
 
 span.tag {
-	-moz-border-radius: 2px;
-	-webkit-border-radius: 2px;
+	/* -moz-border-radius: 2px;
+	-webkit-border-radius: 2px; */
 	display: block;
 	float: left;
 	padding: 5px 9px;
@@ -3434,7 +3438,7 @@ img.avatar,
 ul.messages li img.avatar {
 	height: 32px;
 	width: 32px;
-	float: left;
+	/* float: left;	  */
 	display: inline-block;
 	border-radius: 2px;
 	padding: 2px;

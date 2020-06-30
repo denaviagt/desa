@@ -24,6 +24,6 @@
 		})
 	}
 
-	loadKonten('http://localhost/kuliah/Desa/penduduk/penduduk_list');
+	loadKonten('<?=base_url()?>penduduk/penduduk_list');
 
 </script>

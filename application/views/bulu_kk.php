@@ -1,30 +1,59 @@
-<div class="col-md-12 col-sm-12 col-xs-12">
-	<div class="x_panel">
-		<div class="x_title">
-			<!-- <h5> <small>Users</small></h5> -->
-			<button type="button" class="btn btn-success">Tambah Data</button>
-			<div class="table-responsive">
-				<table id="table-apartur" class="table table-striped jambo_table bulk_action">
-				</table>
-			</div>
-		</div>
-	</div>
-	
-<script type="text/javascript">
-	function loadKonten(url) {
-		$.ajax(url, {
-			type: 'GET',
-			success: function (data, ststus, xhr) {
-				var objData = JSON.parse(data);
+<!DOCTYPE html>
+<html>
 
-				$('#table-apartur').html(objData.konten);
-			},
-			error: function (jqXHR, textStatus, errorMsg) {
-				alert('Error : ' + errorMsg)
-			}
-		})
+<head>
+	<title>Cara Membuat Grafik dengan CodeIgniter dengan Chart.js</title>
+	<!-- Load file plugin Chart.js -->
+	<script src="<?= base_url('assets/') ?>vendors/Chart.js/dist/Chart.min.js"></script>
+</head>
+
+<body>
+	<br>
+	<h4>Cara Membuat Grafik dengan CodeIgniter dengan Chart.js</h4>
+	<canvas id="canvas-jkel" width="1000" height="280">
+	</canvas>
+	<?php
+	$jkel = "";
+	$jum_pend = "";
+	if (is_array($hasil) || is_object($hasil)) {
+		# code...
+		foreach ($hasil as $data) {
+			$jk = $data->jkel;
+			$jkel .= "'$jk'" . ",";
+			$jum = $data->jum_pend;
+			$jum_pend .= "$jum" . ",";
+		}
 	}
+	?>
+	<script>
+		 var myLine = document.getElementById("canvas-jkel").getContext("2d");
+      var chart = new Chart(myLine, {
+         type: 'bar',
+         data: {
+            labels: [
+               <?php echo $jkel;?>
+            ],
+            datasets: [{
+               label: 'Jumlah Penduduk',
+               backgroundColor: '#ADD8E6',
+               borderColor: '##93C3D2',
+               data: [
+                  <?php echo $jum_pend;?>
+               ]
+            }]
+         },
+		 options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+      });
 
-	loadKonten('http://localhost/kuliah/Desa/kepkel/kk_list');
+	</script>
+</body>
 
-</script>
+</html>
