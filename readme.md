@@ -12,6 +12,41 @@ Description:
 
 <img src="https://github.com/denaviagt/desa/blob/master/Screenshoot/Dasboard.PNG" width="500"/>
 
+## Halaman Menu Data Aparatur
+
+<img src="https://github.com/denaviagt/desa/blob/master/Screenshoot/Aparatur-Tampil.PNG" width="500"/>
+
+## Halaman Menu Data Penduduk
+
+<img src="https://github.com/denaviagt/desa/blob/master/Screenshoot/Penduduk-Tampil.PNG" width="500"/>
+
+## Halaman Tambah Data Penduduk
+
+<img src="https://github.com/denaviagt/desa/blob/master/Screenshoot/Penduduk-Tambah.PNG" width="500"/>
+
+## Halaman Tampil Data Kepala Keluarga
+
+<img src="https://github.com/denaviagt/desa/blob/master/Screenshoot/KepalaKeluarga-Tampil.PNG" width="500"/>
+
+## Halaman Tambah Data Kepala Keluarga
+
+<img src="https://github.com/denaviagt/desa/blob/master/Screenshoot/KepalaKeluarga-Tambah.PNG" width="500"/>
+
+## Halaman Statistik Jenis Kelamin
+
+<img src="https://github.com/denaviagt/desa/blob/master/Screenshoot/Statistik%20Jenis%20Kelamin.PNG" width="500"/>
+
+## Halaman Statistik Usia
+
+<img src="https://github.com/denaviagt/desa/blob/master/Screenshoot/Statistik%20Usia.PNG" width="500"/>
+
+## Halaman Statistik Pendidikan
+
+<img src="https://github.com/denaviagt/desa/blob/master/Screenshoot/Statistik%20Pendidikan.PNG" width="500"/>
+
+## Halaman Statistik Agama
+
+<img src="https://github.com/denaviagt/desa/blob/master/Screenshoot/Stsatistik%20Agama.PNG" width="500"/>
 
 
 # What is CodeIgniter
