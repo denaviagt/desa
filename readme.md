@@ -3,17 +3,14 @@
 
 ## Halaman Login
 
-<img src="https://github.com/denaviagt/desa/blob/master/Screenshoot/Login.PNG" width="200"/>
+<img src="https://github.com/denaviagt/desa/blob/master/Screenshoot/Login.PNG" width="500"/>
 
 Description:
 >  Halaman ini akan digunakan untuk melakukan login dengan username dan password admin. 
 
 ## Halaman Dashboard
 
-<img src="https://github.com/denaviagt/desa/blob/master/Screenshoot/Dashboard.PNG" width="200"/>
-
-Description:
->  Halaman ini akan digunakan untuk melakukan login dengan username dan password admin. 
+<img src="https://github.com/denaviagt/desa/blob/master/Screenshoot/Dasboard.PNG" width="500"/>
 
 
 
